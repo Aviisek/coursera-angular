@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -22,9 +23,9 @@ import {MatSliderModule} from '@angular/material/slider'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
 import { DishService } from './services/dish.service';
 import { PromotionService } from './services/promotion.service';
+import { baseURL } from './shared/baseurl';
 
 
 import 'hammerjs';
@@ -53,6 +54,7 @@ import { LoginComponent } from './login/login.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     MatToolbarModule,
     FlexLayoutModule,
@@ -72,7 +74,7 @@ import { LoginComponent } from './login/login.component';
     ReactiveFormsModule
   ],
   entryComponents: [LoginComponent],
-  providers: [DishService, PromotionService, LeaderService],
+  providers: [DishService, PromotionService, LeaderService, {provide: 'BaseURL', useValue: baseURL}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
