@@ -3,13 +3,13 @@ import { Params, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { trigger, state, style, animate, transition } from '@angular/animations';
-
 import { switchMap } from 'rxjs/operators';
 
 import { DishService } from '../services/dish.service';
 import { Dish } from '../shared/dish';
 import { Comment } from '../shared/comment';
+
+import { visibility, flyInOut, expand } from '../animations/app.animation';
 
 
 @Component({
@@ -17,17 +17,9 @@ import { Comment } from '../shared/comment';
   templateUrl: './dish-detail.component.html',
   styleUrls: ['./dish-detail.component.scss'],
   animations: [
-    trigger('visibility', [
-        state('shown', style({
-            transform: 'scale(1.0)',
-            opacity: 1
-        })),
-        state('hidden', style({
-            transform: 'scale(0.5)',
-            opacity: 0
-        })),
-        transition('* => *', animate('0.5s ease-in-out'))
-    ])
+    visibility(),
+    flyInOut(),
+    expand()
   ]
 })
 export class DishDetailComponent implements OnInit {
