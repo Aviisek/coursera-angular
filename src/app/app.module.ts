@@ -41,6 +41,7 @@ import { ContactComponent } from './contact/contact.component';
 import { LeaderService } from './services/leader.service';
 import { LoginComponent } from './login/login.component';
 import { HighlightDirective } from './directives/highlight.directive';
+import { FeedbackService } from './services/feedback.service';
 
 @NgModule({
   declarations: [
@@ -79,7 +80,7 @@ import { HighlightDirective } from './directives/highlight.directive';
   ],
   entryComponents: [LoginComponent],
   providers: [DishService, PromotionService, LeaderService, ProcessHTTPMsgService,
-    {provide: 'BaseURL', useValue: baseURL}],
+    {provide: 'BaseURL', useValue: baseURL}, FeedbackService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
